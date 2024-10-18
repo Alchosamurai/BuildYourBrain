@@ -32,7 +32,7 @@ class ColorCircleGame:
         while True:
             self.print_circles()
             current_color = random.randint(0, 3)
-            time.sleep(count/2)
+            time.sleep(5)
             Cleaner.clear()
             print(f'Cколько было {self.color_dict[current_color]} ?')
             color = int(input())
