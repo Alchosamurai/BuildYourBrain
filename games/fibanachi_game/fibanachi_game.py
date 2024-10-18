@@ -1,6 +1,6 @@
 import os 
 import time
-
+from games.cleaner import Cleaner
 class FibanachiGame:
     def __init__(self):
         self.__nums = [1,2]
@@ -38,7 +38,7 @@ class FibanachiGame:
             if self.check(num):
                 print("Правильный ответ! Продолжаем!")
                 time.sleep(0.7)
-                clear()
+                Cleaner.clear()
             else:
                 print("Вы проиграли")
                 print(f"Ваш счет - {self.__score}")
@@ -54,11 +54,6 @@ class FibanachiGame:
 def main():
     game = FibanachiGame()
     game.play_game()
-
-
-def clear():
-    os.system('cls' if os.name == 'nt' else 'clear')
-
 
 if __name__ == "__main__":
     main()
