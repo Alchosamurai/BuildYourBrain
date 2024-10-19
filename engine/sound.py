@@ -26,3 +26,11 @@ class BtnSound:
         if settings.IS_SOUND:
             self.sound = pygame.mixer.Sound(random.choice(self.sounds))
             self.sound.play()
+
+class ErrorSound:
+    def __init__(self):
+        self.sound = pygame.mixer.Sound('data/sounds/utils/error.mp3')
+
+    def play(self):
+        if settings.IS_SOUND:
+            self.sound.play()
