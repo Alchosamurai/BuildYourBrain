@@ -8,23 +8,26 @@ WIDTH = settings.WIDTH
 HEIGHT = settings.HEIGHT
 FPS = settings.FPS 
 
-pygame.init()
-pygame.mixer.init()  # для звука
-screen = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption(settings.TITLE)
-pygame.display.set_icon(pygame.image.load(settings.ICON_PATH))
+
+current_scene = Router.current_scene()
+
 clock = pygame.time.Clock()
 #* end Game settings --------------------------------------------------------
 # Цикл игры
-current_scene = Router(screen=screen).go_to_menu()
 running = True
 while running:
+
     clock.tick(FPS)
+    if Router.need_to_change:
+        current_scene = Router.current_scene()
     current_scene.render()
-    
-    pygame.display.update()
+    pygame.display.flip()
     for event in pygame.event.get():
+        action, arg = current_scene.control(event)
+        if action == 'switch_scene':
+            Router.change_scene(arg)
         # проверить закрытие окна
         if event.type == pygame.QUIT:
             running = False
             pygame.quit()
+    

@@ -1,6 +1,11 @@
-WIDTH = 1080  
-HEIGHT = 1920
+WIDTH = 360
+HEIGHT = 640
+DEFAULT_WIDTH = 1080
+DEFAULT_HEIGHT = 1920
+SCALE_WIDTH = WIDTH / DEFAULT_WIDTH
+SCALE_HEIGHT = HEIGHT / DEFAULT_HEIGHT
 FPS = 60 
 TITLE = "Тренировка Разума"
 ICON_PATH = 'data/images/icon.png'
 FONT = 'data/fonts/textFont.ttf' #open sans
+IS_SOUND = True
