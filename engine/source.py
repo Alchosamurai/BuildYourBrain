@@ -1,14 +1,27 @@
 import pygame
-import sys
+import random
+import settings as settings
+
+WIDTH = settings.WIDTH 
+HEIGHT = settings.HEIGHT
+FPS = settings.FPS 
 
 pygame.init()
+pygame.mixer.init()  # для звука
+screen = pygame.display.set_mode((WIDTH, HEIGHT))
+pygame.display.set_caption(settings.TITLE)
+pygame.display.set_icon(pygame.image.load(settings.ICON_PATH))
+clock = pygame.time.Clock()
 
-screen = pygame.display.set_mode((1080, 1920))
-r = pygame.Rect(50, 50, 100, 200)
-pygame.draw.rect(screen, (255, 0, 0), r, 0)
-while True:
+# Цикл игры
+running = True
+while running:
+    clock.tick(FPS)
+
+
+    pygame.display.update()
     for event in pygame.event.get():
+        # проверить закрытие окна
         if event.type == pygame.QUIT:
+            running = False
             pygame.quit()
-            sys.exit()
-    pygame.display.flip()
